@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Shop - Phone Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px; /* Limit maximum width for better readability */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #666;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .switch-page {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .switch-page a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .switch-page a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm" action="#" method="post">
+            <label for="loginPhoneNumber">Phone Number:</label>
+            <input type="tel" id="loginPhoneNumber" name="loginPhoneNumber" placeholder="Enter your phone number" maxlength="10" pattern="\d*" required>
+            <!-- pattern="\d*" ensures only numeric characters are allowed -->
+
+            <button type="button" onclick="generateOTP()">Generate OTP</button>
+
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="switch-page">
+            Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a>
+        </div>
+    </div>
+
+    <div class="container" style="display: none;" id="signupContainer">
+        <h2>Sign up</h2>
+        <form id="signupForm" action="#" method="post">
+            <label for="signupName">Name:</label>
+            <input type="text" id="signupName" name="signupName" placeholder="Enter your name" required>
+
+            <label for="signupPhoneNumber">Phone Number:</label>
+            <input type="tel" id="signupPhoneNumber" name="signupPhoneNumber" placeholder="Enter your phone number" maxlength="10" pattern="\d*" required>
+
+            <label for="signupAlternateNumber">Alternate Phone Number (Optional):</label>
+            <input type="tel" id="signupAlternateNumber" name="signupAlternateNumber" placeholder="Enter alternate phone number" maxlength="10" pattern="\d*">
+
+            <label for="signupAddress">Address:</label>
+            <textarea id="signupAddress" name="signupAddress" placeholder="Enter your address" rows="4" required></textarea>
+
+            <button type="button" onclick="generateOTP()">Generate OTP</button>
+
+            <label for="signupOtp">Enter OTP:</label>
+            <input type="text" id="signupOtp" name="signupOtp" placeholder="Enter OTP" required>
+
+            <button type="submit">Sign up</button>
+        </form>
+
+        <div class="switch-page">
+            Already have an account? <a href="#" onclick="toggleForm()">Login</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var loginContainer = document.getElementById("loginContainer");
+            var signupContainer = document.getElementById("signupContainer");
+
+            if (loginContainer.style.display === "none") {
+                loginContainer.style.display = "block";
+                signupContainer.style.display = "none";
+            } else {
+                loginContainer.style.display = "none";
+                signupContainer.style.display = "block";
+            }
+        }
+
+        function generateOTP() {
+            // Implement OTP generation logic here
+            // For simplicity, let's generate a random 6-digit OTP
+            var otp = Math.floor(100000 + Math.random() * 900000);
+
+            // For demonstration purposes, log the OTP to the console
+            console.log("Generated OTP:", otp);
+
+            // You should send this OTP to the user's phone number using a messaging service
+            // For a production environment, consider using a third-party SMS gateway
+
+            alert("OTP has been generated. Check your phone for the OTP.");
+        }
+    </script>
+
+</body>
+
+</html>
