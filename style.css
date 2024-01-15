@@ -139,8 +139,8 @@
 
 /* Media query for screens with a maximum width of 600px (typical mobile screens) */
 @media only screen and (max-width: 600px) {
-  .searchbar-logo, .searchbar-cart {
-      display: none; /* Hide logo and cart on smaller screens */
+  .searchbar-logo,#searchbar-cart-items-id2 {
+      display: none; 
   }
 
   /* Adjust the width of the search bar and item to take full width */
